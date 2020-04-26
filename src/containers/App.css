@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+.grid-container{
+  
+  display: grid;
+  gap: 3rem 5rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: 1fr;
+}
+
+
+.friend{
+  background-color:#FFA8C0;
+  border-color:#FFA8C0 ;
+}
+.friend:hover{
+  background-color:#FF6D80;
+  border-color: #FF6D80;
+}
+.card{
+  transition: transform .2s;
+
+}
+.card:hover{
+  transform: scale(1.1);
+}
+
+
