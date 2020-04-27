@@ -1,15 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
+import {createLogger} from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
 import './index.css';
 import App from '../src/containers/App';
+import {searchRobots, getRobots} from './reducers';
 import * as serviceWorker from './serviceWorker';
+
+const rootReducer = combineReducers({searchRobots, getRobots})
+const logger = createLogger();
+const store = createStore(rootReducer,applyMiddleware(thunkMiddleware,logger));
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App  />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+// becuase we dont want to pass all state to each of component => wrap App in Provider
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
